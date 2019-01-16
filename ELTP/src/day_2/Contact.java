@@ -10,12 +10,27 @@ public class Contact {
 		area,
 		pincode,
 		mobile,
+		email,
 		website,
 		telephone,
 		state,
 		country; 
 	
 	private Date dateOfBirth,anniversary;
+	
+	public boolean validate() throws Exception{
+		if(this.firstName.isEmpty() || this.lastName.isEmpty() || this.dateOfBirth==null || this.email.isEmpty()){
+			throw new Exception("Please Specify Required Details.");
+		}
+		Pattern p=Pattern.compile("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$");
+		Matcher m=p.matcher(this.email);
+		if(!m.find()){
+			throw new Exception("Provide Valid Email.");
+		}
+		return false;
+		
+		
+	}
 
 	public String getFirstName() {
 		return firstName;
