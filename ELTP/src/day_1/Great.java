@@ -1,7 +1,5 @@
 package day_1;
 
-import java.util.Scanner;
-
 public class Great {
 
 	public static int findGreat(int a,int b,int c){
