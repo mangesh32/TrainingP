@@ -1,5 +1,9 @@
 package day_2;
 
+import java.sql.Date;
+
+import day_3.ContactStack;
+
 
 public class Main {
 	
@@ -37,7 +41,33 @@ public class Main {
 //		}
 		
 		Contact aman=new Contact();
-		aman.setMobile("741517845d");
+		aman.setFirstName("Aman");
+		aman.setLastName("Gupta");
+		aman.setMobile("7415178454");
+		aman.setDateOfBirth(Date.valueOf("1998-10-3"));
+		aman.setEmail("aman_gupta1@persistent.com");
+		
+		Contact mg=new Contact();
+		mg.setFirstName("Mangesh");
+		mg.setLastName("Ghodki");
+		mg.setMobile("9713951429");
+		mg.setDateOfBirth(Date.valueOf("1997-1-4"));
+		mg.setEmail("mangesh_ghodki@persistent.com");
+		
+		
+		
+		
+		
+		ContactStack stack=new ContactStack(1);
+		stack.push(aman);
+		stack.pop();
+		stack.push(mg);
+		
+		for(Contact i:stack){
+			System.out.println(i.toString());
+		}
+//		stack.pop();
+		
 		
 		
 	}

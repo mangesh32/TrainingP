@@ -16,6 +16,7 @@ public class Contact {
 		state,
 		country; 
 	
+	
 	private Date dateOfBirth,anniversary;
 	
 	public boolean validate() throws Exception{
@@ -27,10 +28,24 @@ public class Contact {
 		if(!m.find()){
 			throw new Exception("Provide Valid Email.");
 		}
-		return false;
+		if(this.mobile.isEmpty() && this.telephone.isEmpty()){
+			throw new Exception("Provide either mobile or telephone.");
+		}
+		return true;
 		
 		
 	}
+
+	
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 
 	public String getFirstName() {
 		return firstName;
@@ -96,7 +111,7 @@ public class Contact {
 		Pattern p=Pattern.compile("\\d{10}");
 		Matcher m=p.matcher(mobile);
 		if(m.find())
-		{this.mobile = mobile;System.out.println("done");}
+		{this.mobile = mobile;}
 		else
 			System.err.print("Invalid Mobile");
 	}
@@ -148,6 +163,10 @@ public class Contact {
 	public void setAnniversary(Date anniversary) {
 		this.anniversary = anniversary;
 	}
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.firstName+"_"+this.lastName+" DOB: "+this.dateOfBirth;
+	}
 	
 }
