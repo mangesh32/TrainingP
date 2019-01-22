@@ -25,22 +25,21 @@ public class PnC {
 	
 	
 	private static void getPermutations(String str) {
-		ArrayList<Character> arr=new ArrayList<Character>();
-		for(char chr: str.toCharArray())arr.add(Character.valueOf(chr));
+		String s=str;
 		for(int i=0;i<str.length();i++){
-			Character c=arr.get(0);
-			arr.remove(0);
-			arr.add(c);
-			String fstr="";
-			for(Character ch:arr){
-				fstr+=ch.charValue();				
+			for(int j=0;j<str.length()-i;j++){
+				s=s.substring(i)+s.substring(0, i);
+				set.add(s);
 			}
-			set.add(fstr);
 		}
 		
 		
 	}
+	
 	public static void getCombinations(String str){
+		
+		//TODO Not Generating all combinations.
+		
 		char[] arr;		
 		for(int i=0;i<str.length();i++){
 			for(int j=0;j<str.length();j++){
