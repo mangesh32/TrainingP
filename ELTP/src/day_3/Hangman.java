@@ -31,7 +31,7 @@ public class Hangman {
 //		System.out.println(word);
 		hiddenWord=hideLetters(word);
 		remainWord=hiddenWord;
-		totalChance=hiddenIndices.size()+1;
+		totalChance=hiddenIndices.size()+3;
 
 		
 		while(totalChance>0){
