@@ -6,30 +6,38 @@ public class WordInput extends Thread{
 	
 	Scanner in=new Scanner(System.in);
 	WordDropper wd;
-	@SuppressWarnings("deprecation")
 	@Override
 	public void run() {
+		Word.typedWord="";
 		wd=new WordDropper();
 		CountDown timer=new CountDown();
+		wd.start();
+		try {
+			wd.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		timer.start();
-		Scanner in=timer.getScanner();
-		try{
+		if(in.hasNext() && timer.isAlive()){
+			Word.typedWord+=in.nextLine();
+			if(Word.typedWord.toUpperCase().equals(Word.generatedWord)){
+				Word.hitCount+=Word.typedWord.length();
+				Word.generatedWordCount+=1;
+				timer.interrupt();
+				System.out.println(":) Impressive");
+			}
+			else{
+				System.out.println(":( Incorrect Answer.");
+			}
 			
-			Word.typedWord=in.next();
-			timer.destroy();
-			
-		}
-		catch(Exception e){
-			
-		}
+		}else{
+			System.out.println(":( Sorry TimeOver");
+		}		
 		
-		
-		if(Word.typedWord.equals(Word.generatedWord)){
-			Word.hitCount+=Word.typedWord.length();
-			Word.generatedWordCount+=1;
-		}
+		this.interrupt();
 		
 	}
 	
+
 
 }

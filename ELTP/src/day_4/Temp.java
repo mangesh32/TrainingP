@@ -10,7 +10,7 @@ public class Temp {
 
 	public static void main(String[] args) throws IOException {
 		
-		BufferedReader br=new BufferedReader(new FileReader("H:/users/mangesh_ghodki/desktop/newwords.txt"));
+		BufferedReader br=new BufferedReader(new FileReader("H:/users/mangesh_ghodki/desktop/words.txt"));
 		String line;
 		while((line=br.readLine())!=null){
 			System.out.println(line.toUpperCase()+",");
